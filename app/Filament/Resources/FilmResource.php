@@ -9,9 +9,17 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
+use Filament\Support\Enums\FontWeight;
+use Filament\Tables\Columns\Layout\Grid;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use App\Filament\Resources\FilmResource\Pages;
 use RalphJSmit\Filament\Components\Forms\Sidebar;
 use RalphJSmit\Filament\Components\Forms\Timestamps;
+use Filament\Tables\Columns\TextColumn\TextColumnSize;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Hugomyb\FilamentMediaAction\Tables\Actions\MediaAction;
 
 class FilmResource extends Resource
 {
@@ -47,9 +55,17 @@ class FilmResource extends Resource
                                     ->suffix('menit')
                                     ->minValue(0)
                                     ->default(0),
+                                Forms\Components\TextInput::make('release_year')
+                                    ->numeric()
+                                    ->minValue(1000)
+                                    ->default(now()->year)
+                                    ->required(),
                                 Forms\Components\Select::make('genres')
+                                    ->columnSpanFull()
                                     ->required()
                                     ->multiple()
+                                    ->searchable()
+                                    ->optionsLimit(10)
                                     ->preload()
                                     ->relationship('genres', 'name'),
                                 Forms\Components\TextInput::make('trailer')
@@ -57,6 +73,12 @@ class FilmResource extends Resource
                                     ->prefix('https://www.youtube.com/watch?v=')
                                     ->required()
                                     ->maxLength(255),
+                                SpatieMediaLibraryFileUpload::make('image')
+                                    ->required()
+                                    ->columnSpanFull()
+                                    ->collection('film')
+                                    ->resize(50)
+                                    ->optimize('webp'),
                                 Forms\Components\RichEditor::make('description')
                                     ->columnSpanFull(),
                                 Forms\Components\TextInput::make('producer')
@@ -72,7 +94,7 @@ class FilmResource extends Resource
                     [
                         Section::make()
                             ->schema([
-                                ...Timestamps::make()
+                                ...Timestamps::make(),
                             ])
                     ]
                 )
@@ -83,45 +105,71 @@ class FilmResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('genre_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('trailer')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('duration')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('producer')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('director')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('writers')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('production')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Split::make([
+                    SpatieMediaLibraryImageColumn::make('poster')
+                        ->collection('film')
+                        ->size(100)
+                        ->grow(false)
+                        ->action(
+                            MediaAction::make('trailer')
+                                ->media(fn($record) => $record->trailer)
+                                ->autoplay()
+                                ->preload(false),
+                        ),
+                    Grid::make([
+                        'xs' => 2,
+                        'lg' => 1
+                    ])->grow(false)
+                        ->schema([
+                            Tables\Columns\TextColumn::make('name')
+                                ->size(TextColumnSize::Large)
+                                ->weight(FontWeight::Bold)
+                                ->formatStateUsing(function ($record) {
+                                    return "{$record->name} ({$record->release_year})";
+                                })
+                                ->wrap()
+                                ->searchable(['name', 'release_year'])
+                                ->sortable(),
+                            Tables\Columns\TextColumn::make('duration')
+                                ->numeric()
+                                ->icon('heroicon-o-clock')
+                                ->suffix(' menit'),
+                        ]),
+                    Tables\Columns\TextColumn::make('description')
+                        ->html()
+                        ->limit(100)
+                        ->wrap(),
+                    Tables\Columns\TextColumn::make('genres.name')
+                        ->badge()
+                        ->listWithLineBreaks()
+                        ->limitList(2)
+                        ->expandableLimitedList()
+                        ->color('success')
+                        ->searchable()
+                        ->toggleable()
+                        ->grow(false),
+                    Stack::make([
+                        Tables\Columns\TextColumn::make('producer')
+                            ->searchable()
+                            ->icon('heroicon-o-users'),
+                        Tables\Columns\TextColumn::make('writers')
+                            ->icon('heroicon-o-user-group'),
+                        Tables\Columns\TextColumn::make('production')
+                            ->searchable()
+                            ->icon('heroicon-o-building-office')
+                            ->sortable(),
+                    ])
+                ])->from('md')
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()->iconButton(),
+                Tables\Actions\DeleteAction::make()->iconButton(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

@@ -10,6 +10,7 @@ use App\Settings\GeneralSettings;
 use Filament\Support\Colors\Color;
 use Hasnayeen\Themes\ThemesPlugin;
 use Illuminate\Support\Facades\Storage;
+use Filament\Navigation\NavigationGroup;
 use Filament\Forms\Components\FileUpload;
 use Rupadana\ApiService\ApiServicePlugin;
 use Filament\Http\Middleware\Authenticate;
@@ -24,7 +25,6 @@ use DutchCodingCompany\FilamentSocialite\Provider;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use App\Filament\AvatarProviders\BoringAvatarsProvider;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -90,6 +90,24 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Movie Management')
+                    ->icon('heroicon-o-film')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Schedule Management')
+                    ->icon('heroicon-o-calendar-days')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('User Management')
+                    ->icon('heroicon-o-user-group')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Settings')
+                    ->icon('heroicon-o-cog')
+                    ->collapsed()
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),

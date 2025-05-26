@@ -59,6 +59,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
     public function canAccessPanel(Panel $panel): bool
     {
+        if (auth()->user()->hasRole(['super_admin']) || auth()->user()->hasRole(['admin'])) {
+            return true;
+        }
         return true;
     }
 

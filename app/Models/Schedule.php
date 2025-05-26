@@ -34,4 +34,12 @@ class Schedule extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function generateSeats()
+    {
+        $this->load('studio');
+        $seatData = $this->studio->generateSeatData($this->id);
+
+        $this->seats()->createMany($seatData);
+    }
 }

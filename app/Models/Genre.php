@@ -11,7 +11,7 @@ class Genre extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'is_popular'];
 
     public function films(): BelongsToMany
     {

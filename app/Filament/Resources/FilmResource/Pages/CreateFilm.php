@@ -14,4 +14,11 @@ class CreateFilm extends CreateRecord
     {
         return $this->previousUrl ?? $this->getResource()::getUrl('index');
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['trailer'] = 'https://www.youtube.com/watch?v=' . $data['trailer'];
+
+        return $data;
+    }
 }

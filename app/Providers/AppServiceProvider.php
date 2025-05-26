@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Schedule;
 use App\Models\User;
+use App\Observers\ScheduleObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
@@ -28,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
             $event->extendSocialite('google', \SocialiteProviders\Google\Provider::class);
         });
         User::observe(UserObserver::class);
+        Schedule::observe(ScheduleObserver::class);
     }
 }

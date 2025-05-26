@@ -46,7 +46,9 @@ class GenreResource extends Resource
                             ->required()
                             ->optimize('webp')
                             ->maxWidth(512)
-                            ->collection('genre')
+                            ->collection('genre'),
+                        Forms\Components\Toggle::make('is_popular')
+                            ->onColor('success'),
                     ])
             ]);
     }
@@ -62,6 +64,8 @@ class GenreResource extends Resource
                     Tables\Columns\TextColumn::make('name')
                         ->sortable()
                         ->searchable(),
+                    Tables\Columns\ToggleColumn::make('is_popular')
+                        ->onColor('success'),
                 ])
             ])
             ->filters([

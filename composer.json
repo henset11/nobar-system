@@ -15,6 +15,7 @@
         "php": "^8.2",
         "awcodes/filament-quick-create": "^3.6",
         "bezhansalleh/filament-shield": "^3.3",
+        "coolsam/flatpickr": "^4.1",
         "dedoc/scramble": "^0.12.19",
         "dutchcodingcompany/filament-socialite": "^2.4",
         "filament/filament": "^3.3",
