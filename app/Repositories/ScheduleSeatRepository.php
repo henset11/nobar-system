@@ -10,8 +10,12 @@ class ScheduleSeatRepository implements ScheduleSeatRepositoryInterface
 {
     public function getSeatBySchedule($schedule = null)
     {
-        return ScheduleSeat::whereHas('schedule', function (Builder $query) use ($schedule) {
+        $seats = ScheduleSeat::whereHas('schedule', function (Builder $query) use ($schedule) {
             $query->where('id', $schedule);
         })->get();
+
+        return $seats->groupBy(function ($item) {
+            return substr($item->seat_number, 0, 1);
+        });
     }
 }

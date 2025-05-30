@@ -15,6 +15,8 @@
     @vite('resources/css/app.css')
 
     <title>@yield('title')</title>
+
+    @stack('head-scripts')
 </head>
 
 <body>
@@ -27,6 +29,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
+    @stack('scripts')
     @vite('resources/js/app.js')
 </body>
 

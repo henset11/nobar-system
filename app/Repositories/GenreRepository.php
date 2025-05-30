@@ -9,7 +9,7 @@ class GenreRepository implements GenreRepositoryInterface
 {
     public function getAllGenres()
     {
-        return Genre::all();
+        return Genre::orderBy('name', 'asc')->paginate(10);
     }
 
     public function getPopularGenres($limit = 6)
@@ -18,5 +18,10 @@ class GenreRepository implements GenreRepositoryInterface
             ->orderBy('name', 'desc')
             ->take($limit)
             ->get();
+    }
+
+    public function getGenreById($id)
+    {
+        return Genre::findOrFail($id);
     }
 }

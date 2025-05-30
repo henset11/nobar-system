@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Interfaces\FilmRepositoryInterface;
 use App\Interfaces\GenreRepositoryInterface;
 use App\Interfaces\StudioRepositoryInterface;
-use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller
 {

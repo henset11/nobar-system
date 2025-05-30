@@ -23,7 +23,9 @@ class FilmRepository implements FilmRepositoryInterface
             });
         }
 
-        return $query->get();
+        return $query->orderBy('release_year', 'desc')
+            ->orderBy('name', 'asc')
+            ->paginate(10);
     }
 
     public function getFilmBySchedule($schedule = null)
@@ -35,14 +37,20 @@ class FilmRepository implements FilmRepositoryInterface
 
     public function getFilmById($id = null)
     {
-        return Film::where('id', $id)->first();
+        $film = Film::findOrFail($id);
+        $url = parse_url($film->trailer, PHP_URL_QUERY);
+        parse_str($url, $params);
+        $film->trailer = $params['v'] ?? '';
+
+        return $film;
     }
 
     public function getFilmNowPlaying()
     {
         return Film::whereHas('schedules', function (Builder $query) {
             $query->where('play_date', '>=', now()->format('Y-m-d'))
-                ->orderBy('play_date', 'asc');
+                ->orderBy('play_date', 'asc')
+                ->orderBy('play_time', 'asc');
         })->get();
     }
 }

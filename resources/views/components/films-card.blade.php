@@ -1,6 +1,6 @@
-<a href="" class="card">
+<a href="{{ route('films.show', $film->id) }}" class="card">
     <div
-        class="flex rounded-[30px] border border-[#F1F2F6] p-4 gap-4 bg-white dark:bg-[#1e2939] hover:border-[#00598a] dark:hover:border-[#00bcff] transition-all duration-300">
+        class="flex rounded-[30px] border border-[#F1F2F6] dark:border-[#364153] p-4 gap-4 bg-white dark:bg-[#1e2939] hover:border-[#00598a] dark:hover:border-[#00bcff] transition-all duration-300">
         <div class="flex w-[120px] h-[183px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
             <img src="{{ $film->getFirstMediaUrl('film') }}" class="w-full h-full object-cover" alt="{{ $film->name }}">
         </div>
