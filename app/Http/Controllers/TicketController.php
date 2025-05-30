@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTicketRequest;
+use App\Interfaces\ScheduleRepositoryInterface;
 use App\Interfaces\ScheduleSeatRepositoryInterface;
 use App\Interfaces\TicketRepositoryInterface;
 
@@ -10,20 +11,24 @@ class TicketController extends Controller
 {
     private TicketRepositoryInterface $ticketRepository;
     private ScheduleSeatRepositoryInterface $seatRepository;
+    private ScheduleRepositoryInterface $scheduleRepository;
 
     public function __construct(
         TicketRepositoryInterface $ticketRepository,
-        ScheduleSeatRepositoryInterface $seatRepository
+        ScheduleSeatRepositoryInterface $seatRepository,
+        ScheduleRepositoryInterface $scheduleRepository
     ) {
         $this->ticketRepository = $ticketRepository;
         $this->seatRepository = $seatRepository;
+        $this->scheduleRepository = $scheduleRepository;
     }
 
     public function order($scheduleId)
     {
         $seats = $this->seatRepository->getSeatBySchedule($scheduleId);
+        $scheduleData = $this->scheduleRepository->getScheduleForTicket($scheduleId);
 
-        return view('pages.ticket.order', compact('seats'));
+        return view('pages.ticket.order', compact('seats', 'scheduleData'));
     }
 
     public function createTicket(CreateTicketRequest $request)
@@ -35,5 +40,10 @@ class TicketController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('ticket.confirmation')->with('error', $e->getMessage());
         }
+    }
+
+    public function confirmation()
+    {
+        return view('pages.ticket.confirmation');
     }
 }

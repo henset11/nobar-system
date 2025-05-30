@@ -11,4 +11,6 @@ interface ScheduleRepositoryInterface
     public function getScheduleById($id);
 
     public function getScheduleByStudio($studio = null);
+
+    public function getScheduleForTicket($id);
 }

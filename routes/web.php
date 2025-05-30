@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
@@ -21,4 +22,8 @@ Route::get('/studios', [StudioController::class, 'index'])->name('studios.index'
 Route::get('/studios/{id}', [StudioController::class, 'show'])->name('studios.show');
 
 // Ticket Page
-Route::get('/ticket/order/{scheduleId}', [TicketController::class, 'order'])->name('ticket.order');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/ticket/order/{scheduleId}', [TicketController::class, 'order'])->name('ticket.order');
+    Route::post('/ticket/order', [TicketController::class, 'createTicket'])->name('ticket.create');
+    Route::get('/ticket/confirmation', [TicketController::class, 'confirmation'])->name('ticket.confirmation');
+});

@@ -40,4 +40,17 @@ class ScheduleRepository implements ScheduleRepositoryInterface
                 ->orderBy('play_time', 'asc');
         })->paginate(10);
     }
+
+    public function getScheduleForTicket($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+
+        return [
+            'id' => $schedule->id,
+            'film' => $schedule->film->name . ' (' . $schedule->film->release_year  . ')',
+            'studio' => $schedule->studio->name,
+            'play_date' => $schedule->play_date,
+            'play_time' => $schedule->play_time,
+        ];
+    }
 }
