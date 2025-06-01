@@ -10,8 +10,8 @@
             <p class="mb-4 text-center text-sm text-[#364153] dark:text-[#99a1af]">Masukkan email dan password</p>
 
             <div class="mb-5">
-                <label for="email" class="mb-2 text-sm text-[#1e2939] dark:text-[#e5e7eb]">Email</label>
-                <input type="email" name="email" id="email" placeholder="example@gmail.com"
+                <label for="email" class="mb-2 text-sm text-[#1e2939] dark:text-[#e5e7eb]">Email / Username</label>
+                <input type="text" name="email" id="email" placeholder="Masukkan Email / Username"
                     class="flex items-center w-full px-3 py-3 rounded-xl text-sm font-medium placeholder:text-[#99a1af] dark:placeholder:text-[#99a1af] bg-[#e5e7eb] dark:bg-[#4a5565] text-[#101828] dark:text-[#e5e7eb] outline-none focus:bg-[#d1d5dc] dark:focus:bg-[#6a7282] @error('email') border border-[#e7000b] dark:border-[#ff637e] @enderror"
                     value="{{ old('email') }}">
                 @error('email')

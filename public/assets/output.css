@@ -717,6 +717,11 @@ video {
 .mt-2 {
     margin-top: 0.5rem /* 8px */;
 }
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
