@@ -23,6 +23,13 @@ class TicketController extends Controller
         $this->scheduleRepository = $scheduleRepository;
     }
 
+    public function index()
+    {
+        $tickets = $this->ticketRepository->getTicketUser(auth()->id());
+
+        return view('pages.ticket.index', compact('tickets'));
+    }
+
     public function order($scheduleId)
     {
         $seats = $this->seatRepository->getSeatBySchedule($scheduleId);
@@ -35,10 +42,11 @@ class TicketController extends Controller
     {
         try {
             $this->ticketRepository->createOrder($request['schedule_id'], $request['seat_id']);
+            $this->seatRepository->setSeatBooked($request['seat_id']);
 
             return redirect()->route('ticket.confirmation')->with('success', 'Ticket berhasil dipesan!');
         } catch (\Exception $e) {
-            return redirect()->route('ticket.confirmation')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

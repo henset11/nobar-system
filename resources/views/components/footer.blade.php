@@ -25,7 +25,8 @@
                 </a>
             </div>
 
-            <a href="" class="flex flex-col items-center text-white space-y-1">
+            <a href="{{ route('ticket.index') }}"
+                class="flex flex-col items-center {{ Route::is('ticket.*') ? 'text-[#00bcff]' : 'text-white' }}  space-y-1">
                 <x-heroicon-o-ticket class="w-6 h-6" />
                 <span class="text-xs">Ticket</span>
             </a>
@@ -36,7 +37,7 @@
                     <span class="text-xs">Profile</span>
                 </a>
             @else
-                <a href="" class="flex flex-col items-center text-white space-y-1">
+                <a href="{{ route('login') }}" class="flex flex-col items-center text-white space-y-1">
                     <x-heroicon-o-arrow-down-on-square class="w-6 h-6" />
                     <span class="text-xs">Login</span>
                 </a>

@@ -77,7 +77,8 @@
                 class="w-[8rem] h-auto rounded-lg shadow-md -mt-[5rem]">
             <div class="flex w-full flex-col justify-center -mt-[1rem]">
                 <div class="flex justify-between">
-                    <h1 class="font-bold text-2xl leading-[33px]">{{ $film->name }}</h1>
+                    <h1 class="font-bold text-[#1e2939] dark:text-[#ffffff] text-2xl leading-[33px]">{{ $film->name }}
+                    </h1>
                     <div
                         class="flex flex-col items-center text-center shrink-0 rounded-[22px] border border-[#f0b100] p-[10px] gap-2 bg-white dark:bg-[#101828]">
                         <x-heroicon-m-star class="w-6 h-6 text-[#f0b100]" />

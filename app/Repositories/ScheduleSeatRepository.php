@@ -18,4 +18,12 @@ class ScheduleSeatRepository implements ScheduleSeatRepositoryInterface
             return substr($item->seat_number, 0, 1);
         });
     }
+
+    public function setSeatBooked($id)
+    {
+        $seat = ScheduleSeat::find($id);
+        $seat->is_booked = true;
+
+        return $seat->save();
+    }
 }

@@ -23,6 +23,7 @@ Route::get('/studios/{id}', [StudioController::class, 'show'])->name('studios.sh
 
 // Ticket Page
 Route::middleware(['auth'])->group(function () {
+    Route::get('/ticket', [TicketController::class, 'index'])->name('ticket.index');
     Route::get('/ticket/order/{scheduleId}', [TicketController::class, 'order'])->name('ticket.order');
     Route::post('/ticket/order', [TicketController::class, 'createTicket'])->name('ticket.create');
     Route::get('/ticket/confirmation', [TicketController::class, 'confirmation'])->name('ticket.confirmation');
