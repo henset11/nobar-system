@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    <x-impersonate::banner />
     <div id="Content-Container"
         class="relative flex flex-col w-full max-w-[640px] min-h-screen mx-auto overflow-x-hidden bg-white  dark:bg-[#101828] text-[#030712] dark:text-[#fff]">
 

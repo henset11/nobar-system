@@ -73,9 +73,11 @@ class UserResource extends Resource implements HasShieldPermissions
     {
         $rows = [
             TextInput::make('name')
-                ->columnSpanFull()
                 ->required()
                 ->label(trans('filament-users::user.resource.name')),
+            TextInput::make('username')
+                ->required()
+                ->unique(ignoreRecord: true),
             TextInput::make('email')
                 ->email()
                 ->required()
@@ -136,8 +138,8 @@ class UserResource extends Resource implements HasShieldPermissions
                             ->columnSpanFull()
                             ->label('User Avatar'),
                         TextEntry::make('name')
-                            ->columnSpanFull()
                             ->label('Name'),
+                        TextEntry::make('username'),
                         TextEntry::make('email'),
                         TextEntry::make('email_verified_at')
                             ->visible(fn($record) => $record->email_verified_at)
@@ -169,6 +171,9 @@ class UserResource extends Resource implements HasShieldPermissions
                 ->sortable()
                 ->searchable()
                 ->label(trans('filament-users::user.resource.email')),
+            TextColumn::make('username')
+                ->sortable()
+                ->searchable(),
             IconColumn::make('email_verified_at')
                 ->state(fn($record) => (bool) $record->email_verified_at)
                 ->boolean()
@@ -211,7 +216,7 @@ class UserResource extends Resource implements HasShieldPermissions
                         ($record->hasRole('super_admin') && !auth()->user()->hasRole('super_admin'))),
                 Impersonate::make()
                     ->visible(auth()->user()->can('impersonate_user'))
-                    ->redirectTo(fn() => filament()->getCurrentPanel()->getUrl()),
+                    ->redirectTo(route('home')),
             ]);
 
         return $table;

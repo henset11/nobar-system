@@ -54,4 +54,9 @@ class TicketController extends Controller
     {
         return view('pages.ticket.confirmation');
     }
+
+    public function checkTicket()
+    {
+        return view('pages.ticket.check-ticket');
+    }
 }

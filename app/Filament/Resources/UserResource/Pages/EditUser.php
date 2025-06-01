@@ -61,7 +61,7 @@ class EditUser extends EditRecord
 
     protected function getActions(): array
     {
-        !config('filament-users.impersonate') ?: $ret[] = Impersonate::make()->record($this->getRecord())->visible(auth()->user()->can('impersonate_user'))->redirectTo(fn() => filament()->getCurrentPanel()->getUrl());
+        !config('filament-users.impersonate') ?: $ret[] = Impersonate::make()->record($this->getRecord())->visible(auth()->user()->can('impersonate_user'))->redirectTo(route('home'));
         $ret[] = DeleteAction::make()->hidden(fn(User $record) => auth()->id() === $record->id);
 
         return $ret;

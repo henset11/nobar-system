@@ -31,7 +31,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         'email',
         'password',
         'avatar_url',
-        'email_verified_at'
+        'email_verified_at',
+        'username',
     ];
 
     /**
@@ -62,7 +63,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         if (auth()->user()->hasRole(['super_admin']) || auth()->user()->hasRole(['admin'])) {
             return true;
         }
-        return true;
+        return false;
     }
 
     public function getFilamentAvatarUrl(): ?string

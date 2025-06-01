@@ -7,8 +7,10 @@ use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use App\Settings\GeneralSettings;
+use App\Filament\Pages\Auth\Login;
 use Filament\Support\Colors\Color;
 use Hasnayeen\Themes\ThemesPlugin;
+use App\Filament\Pages\Auth\Register;
 use Illuminate\Support\Facades\Storage;
 use Filament\Navigation\NavigationGroup;
 use Filament\Forms\Components\FileUpload;
@@ -57,8 +59,8 @@ class AdminPanelProvider extends PanelProvider
             ->when($this->settings->site_logo ?? null, fn($panel) => $panel->brandLogo(asset(Storage::url($this->settings->site_logo))))
             ->when($this->settings->dark_site_logo ?? null, fn($panel) => $panel->darkModeBrandLogo(asset(Storage::url($this->settings->dark_site_logo))))
             ->brandLogoHeight('2.5rem')
-            ->when($this->settings->login_enabled ?? true, fn($panel) => $panel->login())
-            ->when($this->settings->registration_enabled ?? false, fn($panel) => $panel->registration())
+            ->when($this->settings->login_enabled ?? true, fn($panel) => $panel->login(Login::class))
+            ->when($this->settings->registration_enabled ?? false, fn($panel) => $panel->registration(Register::class))
             ->when($this->settings->password_reset_enabled ?? true, fn($panel) => $panel->passwordReset())
             ->emailVerification()
             ->profile()
