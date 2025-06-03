@@ -35,15 +35,24 @@ Route::middleware('passwordreset.enabled')->group(function () {
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
 });
 
+Route::post('/validate-password', [ProfileController::class, 'validatePassword'])->name('validate.password');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     // Ticket Page
     Route::get('/ticket', [TicketController::class, 'index'])->name('ticket.index');
     Route::get('/ticket/order/{scheduleId}', [TicketController::class, 'order'])->name('ticket.order');
     Route::post('/ticket/order', [TicketController::class, 'createTicket'])->name('ticket.create');
     Route::get('/ticket/confirmation', [TicketController::class, 'confirmation'])->name('ticket.confirmation');
+    Route::get('/ticket/details/{id}', [TicketController::class, 'detailTicket'])->name('ticket.details');
 
     // Profile Page
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/security', [ProfileController::class, 'security'])->name('profile.security');
+    Route::get('/profile/security/change-password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
+    Route::get('/profile/theme', [ProfileController::class, 'theme'])->name('profile.theme');
+    Route::get('/profile/help', [ProfileController::class, 'help'])->name('profile.help');
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|super_admin'])->group(function () {

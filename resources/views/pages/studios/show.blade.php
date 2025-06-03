@@ -12,7 +12,7 @@
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
             <x-heroicon-s-arrow-left-circle class="w-9 h-9 text-[#ffffff25]" />
         </a>
-        <p class="font-semibold text-white">Studio Details</p>
+        <p class="font-semibold text-white">Detail Studio</p>
         <div
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
             <x-heroicon-m-hand-thumb-up class="w-6 h-6 text-[#ffffff25]" />
@@ -40,23 +40,21 @@
             </div>
             <div class="flex items-center gap-[6px]">
                 <x-heroicon-m-users class="w-[26px] h-[26px] flex shrink-0 text-ngekos-grey dark:text-[#d1d5dc]" />
-                <p class="text-ngekos-grey dark:text-[#d1d5dc]">{{ $studio->capacity }} person</p>
+                <p class="text-ngekos-grey dark:text-[#d1d5dc]">{{ $studio->capacity }} orang</p>
             </div>
         </div>
         <hr class="border-[#F1F2F6] mx-5">
         <div id="About" class="flex flex-col gap-[6px] px-5">
-            <h2 class="font-bold">About</h2>
-            <p class="leading-[30px]">Our studio offers a clean and comfortable space, equipped with air conditioning,
-                high-quality audio, and an excellent visual system. Designed to enhance your viewing experience, it's the
-                perfect place for private screenings, film sessions, or any audiovisual event.</p>
+            <h2 class="font-bold">Tentang</h2>
+            <p class="leading-[30px]">Studio nyaman untuk acara nonton film bareng temen-temen di Dunia Prestasi</p>
         </div>
         <div id="Tabs" class="flex w-full overflow-x-hidden mx-5 gap-2">
             <button
                 class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300 !bg-ngekos-black !text-white"
-                data-target-tab="#Schedule-Tab">Schedule</button>
+                data-target-tab="#Schedule-Tab">Jadwal</button>
             <button
                 class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                data-target-tab="#Seat-Tab">Seats</button>
+                data-target-tab="#Seat-Tab">Kursi</button>
         </div>
         <div id="TabsContent" class="px-5">
             <div id="Schedule-Tab" class="tab-content flex flex-col gap-4">
@@ -90,9 +88,9 @@
                                 </div>
                                 <div class="flex items-center gap-[6px]">
                                     <x-heroicon-o-clock class="w-5 h-5 flex shrink-0 text-ngekos-grey" />
-                                    <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Duration:
+                                    <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Durasi:
                                         {{ $schedule->film->duration }}
-                                        minutes</p>
+                                        menit</p>
                                 </div>
                             </div>
                         </div>

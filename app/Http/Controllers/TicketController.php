@@ -59,4 +59,12 @@ class TicketController extends Controller
     {
         return view('pages.ticket.check-ticket');
     }
+
+    public function detailTicket($id)
+    {
+        $ticket = $this->ticketRepository->getTicketById($id);
+        $qrCodePath = $this->ticketRepository->generateQrCode($ticket->code);
+
+        return view('pages.ticket.details', compact('ticket'));
+    }
 }

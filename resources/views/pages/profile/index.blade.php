@@ -11,19 +11,19 @@
 
     <div class="flex flex-col mt-4 px-6 gap-2">
         <h3 class="font-light">Pengaturan</h3>
-        <a href="" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
+        <a href="{{ route('profile.edit') }}" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
             <div class="flex rounded-full bg-[#d1d5dc] dark:bg-[#1e2939] items-center justify-center w-11 h-11">
                 <x-heroicon-o-user class="w-5 h-5" />
             </div>
             <p class="font-semibold">Edit Profile</p>
         </a>
-        <a href="" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
+        <a href="{{ route('profile.security') }}" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
             <div class="flex rounded-full bg-[#d1d5dc] dark:bg-[#1e2939] items-center justify-center w-11 h-11">
                 <x-heroicon-o-key class="w-5 h-5" />
             </div>
             <p class="font-semibold">Keamanan Akun</p>
         </a>
-        <a href="" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
+        <a href="{{ route('profile.theme') }}" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
             <div class="flex rounded-full bg-[#d1d5dc] dark:bg-[#1e2939] items-center justify-center w-11 h-11">
                 <x-heroicon-o-moon class="w-5 h-5" />
             </div>
@@ -31,7 +31,7 @@
         </a>
 
         <h3 class="font-light">Lainnya</h3>
-        <a href="" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
+        <a href="{{ route('profile.help') }}" class="flex gap-3 items-center mb-3 hover:text-[#0084d1]">
             <div class="flex rounded-full bg-[#d1d5dc] dark:bg-[#1e2939] items-center justify-center w-11 h-11">
                 <x-heroicon-o-question-mark-circle class="w-5 h-5" />
             </div>

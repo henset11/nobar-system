@@ -9,14 +9,14 @@
         <a href="{{ url()->previous() }}">
             <x-heroicon-s-arrow-left-circle class="w-15 h-15 text-[#6a7282] dark:text-[#f3f4f6]" />
         </a>
-        <p class="font-semibold text-[#1e2939] dark:text-[#e5e7eb]">Browse {{ $genre->name }}</p>
+        <p class="font-semibold text-[#1e2939] dark:text-[#e5e7eb]">Cari {{ $genre->name }}</p>
         <div class="dummy-btn w-12"></div>
     </div>
     <div id="Header" class="relative flex items-center justify-between gap-2 px-5 mt-[18px]">
         <div class="flex flex-col gap-[6px]">
-            <h1 class="font-bold text-[32px] leading-[48px] text-[#1e2939] dark:text-[#e5e7eb]">All Movie with Genre
+            <h1 class="font-bold text-[32px] leading-[48px] text-[#1e2939] dark:text-[#e5e7eb]">Semua Film dengan Genre
                 {{ $genre->name }}</h1>
-            <p class="text-[#6a7282] dark:text-[#d1d5dc]">Available {{ $genre->films->count() }} movies</p>
+            <p class="text-[#6a7282] dark:text-[#d1d5dc]">Tersedia {{ $genre->films->count() }} film</p>
         </div>
         <div
             class="flex flex-col items-center text-center shrink-0 rounded-[22px] p-[10px] gap-2 bg-white dark:bg-[#d1d5dc]">
@@ -30,7 +30,7 @@
                 <div class="w-[120px] h-[120px] bg-[#D9D9D9] rounded-full flex items-center justify-center">
                     <x-heroicon-o-film class="w-16 h-16 text-[#6a7282]" />
                 </div>
-                <p class="text-lg text-[#6a7282] dark:text-[#d1d5dc]">No movies available in this genre.</p>
+                <p class="text-lg text-[#6a7282] dark:text-[#d1d5dc]">Tidak ada film tersedia.</p>
             </div>
         @endif
 

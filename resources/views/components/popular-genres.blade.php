@@ -8,7 +8,7 @@
             </div>
             <div class="flex flex-col gap-[2px]">
                 <h3 class="font-semibold">{{ $genre->name }}</h3>
-                <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">{{ $genre->films->count() }} movies
+                <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">{{ $genre->films->count() }} film
                 </p>
             </div>
         </div>

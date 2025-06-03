@@ -29,10 +29,10 @@
     {{-- Now Playing Section --}}
     <section id="NowPlaying" class="flex flex-col gap-4">
         <div class="flex items-center justify-between px-5">
-            <h2 class="font-bold">Now Playing</h2>
+            <h2 class="font-bold">Sedang Tayang</h2>
             <a href="{{ route('films.index') }}">
                 <div class="flex items-center gap-2">
-                    <span>See all</span>
+                    <span>Lihat semua</span>
                     <x-heroicon-s-arrow-right-circle class="w-5 h-5 text-[#6a7282] dark:text-[#e5e7eb]" />
                 </div>
             </a>
@@ -45,7 +45,7 @@
                             class="w-12 h-12 rounded-full bg-[#f3f4f6] dark:bg-[#6b728033] flex items-center justify-center p-1">
                             <x-heroicon-c-x-mark class="text-[#6a7282] dark:text-[#99a1af] p-[5px]" />
                         </div>
-                        <h3 class="text-[#030712] dark:text-[#fff]">No Movie Playing</h3>
+                        <h3 class="text-[#030712] dark:text-[#fff]">Tidak ada Film Tayang</h3>
                     </div>
                 @endif
 
@@ -59,10 +59,10 @@
     {{-- Studio Section --}}
     <section id="Studios" class="flex flex-col p-5 gap-4 bg-[#F5F6F8] dark:bg-[#1e2939] mt-[30px]">
         <div class="flex items-center justify-between">
-            <h2 class="font-bold">Browse Studios</h2>
+            <h2 class="font-bold">Cari Studio</h2>
             <a href="{{ route('studios.index') }}">
                 <div class="flex items-center gap-2">
-                    <span>See all</span>
+                    <span>Lihat semua</span>
                     <x-heroicon-s-arrow-right-circle class="w-5 h-5 text-[#6a7282] dark:text-[#e5e7eb]" />
                 </div>
             </a>
@@ -81,7 +81,7 @@
                             <h3 class="font-semibold">{{ $studio->name }}</h3>
                             <div class="flex gap-[6px]">
                                 <x-heroicon-o-users class="w-5 h-5 flex shrink-0 text-ngekos-grey dark:text-[#99a1af]" />
-                                <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">{{ $studio->capacity }} seat</p>
+                                <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">{{ $studio->capacity }} kursi</p>
                             </div>
                         </div>
                     </div>
@@ -93,10 +93,10 @@
     {{-- All Film Section --}}
     <section id="Best" class="flex flex-col gap-4 px-5 mt-[30px]">
         <div class="flex items-center justify-between">
-            <h2 class="font-bold">All Great Movie</h2>
+            <h2 class="font-bold">Film Bagus Lainnya</h2>
             <a href="{{ route('films.index') }}">
                 <div class="flex items-center gap-2">
-                    <span>See all</span>
+                    <span>Lihat semua</span>
                     <x-heroicon-s-arrow-right-circle class="w-5 h-5 text-[#6a7282] dark:text-[#e5e7eb]" />
                 </div>
             </a>

@@ -16,7 +16,7 @@
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
             <x-heroicon-s-arrow-left-circle class="w-9 h-9 text-[#ffffff25]" />
         </a>
-        <p class="font-semibold text-white">Film Details</p>
+        <p class="font-semibold text-white">Detail Film</p>
         <div
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
             <x-heroicon-m-hand-thumb-up class="w-6 h-6 text-[#ffffff25]" />
@@ -95,10 +95,10 @@
         <div id="Tabs" class="flex w-full overflow-x-hidden mx-5 gap-2">
             <button
                 class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300 !bg-ngekos-black !text-white"
-                data-target-tab="#Schedule-Tab">Schedule</button>
+                data-target-tab="#Schedule-Tab">Jadwal</button>
             <button
                 class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                data-target-tab="#Details-Tab">Details</button>
+                data-target-tab="#Details-Tab">Detail</button>
         </div>
         <div id="TabsContent" class="px-5">
             <div id="Schedule-Tab" class="tab-content flex flex-col gap-4">
@@ -158,7 +158,7 @@
                             class="w-12 h-12 rounded-full bg-[#f3f4f6] dark:bg-[#6b728033] flex items-center justify-center p-1">
                             <x-heroicon-c-x-mark class="text-[#6a7282] dark:text-[#99a1af] p-[5px]" />
                         </div>
-                        <h3 class="text-[#030712] dark:text-[#fff]">No Schedules</h3>
+                        <h3 class="text-[#030712] dark:text-[#fff]">Tidak Ada Jadwal</h3>
                     </div>
                 @endif
             </div>

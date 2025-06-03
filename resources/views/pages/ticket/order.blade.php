@@ -35,15 +35,15 @@
         <div class="flex w-full px-5 justify-center mb-9 gap-8">
             <div class="flex gap-2">
                 <div class="w-5 h-5 rounded-[0.25rem] bg-[#1e2939] dark:bg-[#4a5565]"></div>
-                <div class="text-sm">available</div>
+                <div class="text-sm">tersedia</div>
             </div>
             <div class="flex gap-2">
                 <div class="w-5 h-5 rounded-[0.25rem] bg-[#ff6467] dark:bg-[#fb2c36]"></div>
-                <div class="text-sm">booked</div>
+                <div class="text-sm">dipesan</div>
             </div>
             <div class="flex gap-2">
                 <div class="w-5 h-5 rounded-[0.25rem] bg-[#008236]"></div>
-                <div class="text-sm">selected</div>
+                <div class="text-sm">dipilih</div>
             </div>
         </div>
 

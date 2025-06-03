@@ -11,7 +11,7 @@
             <a href="{{ route('films.index') }}"
                 class="flex flex-col items-center {{ Route::is('films.*') ? 'text-[#00bcff]' : 'text-white' }} space-y-1">
                 <x-heroicon-o-film class="w-6 h-6" />
-                <span class="text-xs">Movie</span>
+                <span class="text-xs">Film</span>
             </a>
 
             <!-- Tombol Tengah (Floating Action Button) -->

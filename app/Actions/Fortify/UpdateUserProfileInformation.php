@@ -3,9 +3,10 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
@@ -33,8 +34,23 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'string',
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
-            ]
+            ],
+
+            'avatar' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048'
+            ],
         ])->validateWithBag('updateProfileInformation');
+
+        if (isset($input['avatar']) && $input['avatar']) {
+            if ($user->avatar_url) {
+                Storage::disk('public')->delete($user->avatar_url);
+            }
+
+            $input['avatar'] = $input['avatar']->store('profile-photos', 'public');
+        }
 
         if (
             $input['email'] !== $user->email &&
@@ -46,6 +62,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'username' => $input['username'],
+                'avatar_url' => $input['avatar'] ?? $user->avatar_url,
             ])->save();
         }
     }
@@ -60,7 +77,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             'email' => $input['email'],
+            'username' => $input['username'],
             'email_verified_at' => null,
+            'avatar_url' => $input['avatar'] ?? $user->avatar_url,
         ])->save();
 
         $user->sendEmailVerificationNotification();

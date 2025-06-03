@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Check Ticket | Nonton Bareng')
+@section('title', 'Cek Ticket | Nonton Bareng')
 
 @section('content')
 

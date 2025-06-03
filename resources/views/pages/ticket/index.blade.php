@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'My Ticket | Nonton Bareng')
+@section('title', 'Ticket Saya | Nonton Bareng')
 
 @section('content')
     <div id="TopNav" class="sticky flex items-center justify-between px-5 top-0 z-50 py-[0.75rem]">
@@ -22,7 +22,7 @@
                 data-target-tab="#Film-Tab">Film</button>
             <button
                 class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                data-target-tab="#Food-Tab">Food</button>
+                data-target-tab="#Food-Tab">Makanan</button>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
 
             <div class="flex flex-col gap-5">
                 @foreach ($tickets as $ticket)
-                    <a href="">
+                    <a href="{{ route('ticket.details', $ticket->id) }}">
                         <div class="flex rounded-lg gap-2 px-3 py-3 bg-[#d1d5dc] dark:bg-[#4a5565]">
                             <img src="{{ $ticket->schedule->film->getFirstMediaUrl('film') }}"
                                 alt="{{ $ticket->schedule->film->name }}" class="w-[5.5rem] rounded-md">

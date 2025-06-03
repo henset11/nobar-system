@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9467a4417e34369c02e5b936a9339892",
+    "content-hash": "6895c30f79078dd8d674c656e57dd132",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -71,6 +71,72 @@
                 "source": "https://github.com/AnourValar/eloquent-serialize/tree/1.3.1"
             },
             "time": "2025-04-06T06:54:34+00:00"
+        },
+        {
+            "name": "asikam/simple-qrcode",
+            "version": "v1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asikam/simple-qrcode.git",
+                "reference": "c9f0311f20eef0765f2a0fc6eef04ff198442cbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asikam/simple-qrcode/zipball/c9f0311f20eef0765f2a0fc6eef04ff198442cbb",
+                "reference": "c9f0311f20eef0765f2a0fc6eef04ff198442cbb",
+                "shasum": ""
+            },
+            "require": {
+                "bacon/bacon-qr-code": "^3.0",
+                "ext-gd": "*",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1",
+                "phpunit/phpunit": "~9"
+            },
+            "suggest": {
+                "ext-imagick": "Allows the generation of PNG QrCodes.",
+                "illuminate/support": "Allows for use within Laravel."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "QrCode": "Asikam\\QrCode\\Facades\\QrCode"
+                    },
+                    "providers": [
+                        "Asikam\\QrCode\\QrCodeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asikam\\QrCode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "asikam",
+                    "email": "a.sykamiotis@gmail.com"
+                }
+            ],
+            "description": "Simple QrCode is a QR code generator made for Laravel.",
+            "keywords": [
+                "Simple",
+                "generator",
+                "laravel",
+                "qrcode",
+                "wrapper"
+            ],
+            "support": {
+                "source": "https://github.com/asikam/simple-qrcode/tree/v1.2.5"
+            },
+            "time": "2025-03-21T10:06:48+00:00"
         },
         {
             "name": "awcodes/filament-quick-create",

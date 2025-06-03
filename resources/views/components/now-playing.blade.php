@@ -26,8 +26,8 @@
                  <hr class="border-[#F1F2F6]">
                  <div class="flex items-center gap-[6px]">
                      <x-heroicon-o-clock class="w-5 h-5 flex shrink-0 text-ngekos-grey dark:text-[#99a1af]" />
-                     <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Duration:
-                         {{ $playing->duration }} minutes</p>
+                     <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Durasi:
+                         {{ $playing->duration }} menit</p>
                  </div>
                  <div class="flex items-center gap-[6px]">
                      <x-heroicon-o-users class="w-5 h-5 flex shrink-0 text-ngekos-grey dark:text-[#99a1af]" />

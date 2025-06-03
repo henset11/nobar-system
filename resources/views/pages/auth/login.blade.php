@@ -36,9 +36,9 @@
                 </div>
             @endif
             <button
-                class="w-full mb-2 px-3 py-4 text-sm font-bold leading-none bg-[#00598a] dark:bg-[#024a70] rounded-xl text-white hover:bg-[#024a70] dark:hover:bg-[#00598a]">Login</button>
+                class="w-full mb-3 px-3 py-4 text-sm font-bold leading-none bg-[#00598a] dark:bg-[#024a70] rounded-xl text-white hover:bg-[#024a70] dark:hover:bg-[#00598a]">Login</button>
             @if (app(\App\Settings\GeneralSettings::class)->registration_enabled)
-                <p class="text-sm leading-relaxed text-[#101828] dark:text-[#e5e7eb]">Belum punya akun? <a
+                <p class="text-center text-sm leading-relaxed text-[#101828] dark:text-[#e5e7eb]">Belum punya akun? <a
                         href="{{ route('register') }}" class="font-bold text-[#364153] dark:text-[#99a1af]">Buat akun</a>
                 </p>
             @endif

@@ -1,22 +1,22 @@
 @extends('layouts.master')
 
-@section('title', 'Studios | Nonton Bareng')
+@section('title', 'Studio | Nonton Bareng')
 
 @section('content')
     <div id="Background" class="absolute top-0 w-full h-[570px] rounded-b-[75px] bg-[#b8e6fe] dark:bg-[#00598a]">
     </div>
     {{-- Top Navigation --}}
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
-        <a href="{{ url()->previous() }}">
+        <a href="{{ route('home') }}">
             <x-heroicon-s-arrow-left-circle class="w-15 h-15 text-[#6a7282] dark:text-[#f3f4f6]" />
         </a>
-        <p class="font-semibold text-[#1e2939] dark:text-[#e5e7eb]">Browse Studio</p>
+        <p class="font-semibold text-[#1e2939] dark:text-[#e5e7eb]">Cari Studio</p>
         <div class="dummy-btn w-12"></div>
     </div>
     <div id="Header" class="relative flex items-center justify-between gap-2 px-5 mt-[18px]">
         <div class="flex flex-col gap-[6px]">
-            <h1 class="font-bold text-[32px] leading-[48px] text-[#1e2939] dark:text-[#e5e7eb]">Choose your Studio</h1>
-            <p class="text-[#6a7282] dark:text-[#d1d5dc]">Available {{ $studios->count() }} studio</p>
+            <h1 class="font-bold text-[32px] leading-[48px] text-[#1e2939] dark:text-[#e5e7eb]">Pilih Studiomu</h1>
+            <p class="text-[#6a7282] dark:text-[#d1d5dc]">Tersedia {{ $studios->count() }} studio</p>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
                 <div class="w-[120px] h-[120px] bg-[#D9D9D9] rounded-full flex items-center justify-center">
                     <x-heroicon-o-building-office class="w-16 h-16 text-[#6a7282]" />
                 </div>
-                <p class="text-lg text-[#6a7282] dark:text-[#d1d5dc]">No studios available.</p>
+                <p class="text-lg text-[#6a7282] dark:text-[#d1d5dc]">Studio tidak tersedia.</p>
             </div>
         @endif
 
@@ -53,7 +53,7 @@
                         <hr class="border-[#F1F2F6]">
                         <div class="flex items-center gap-[6px]">
                             <x-heroicon-o-users class="w-5 h-5 flex shrink-0 text-ngekos-grey" />
-                            <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Capacity: {{ $studio->capacity }} seats
+                            <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Kapasitas: {{ $studio->capacity }} kursi
                             </p>
                         </div>
                     </div>

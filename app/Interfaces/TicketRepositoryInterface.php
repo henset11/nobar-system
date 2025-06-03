@@ -13,4 +13,8 @@ interface TicketRepositoryInterface
     public function checkSeatBook($scheduleId, $seatId);
 
     public function checkUserBook($scheduleId);
+
+    public function getTicketById($id);
+
+    public function generateQrCode($ticketCode);
 }

@@ -10,15 +10,15 @@
             <hr class="border-[#F1F2F6]">
             <div class="flex flex-wrap gap-2">
                 @foreach ($film->genres as $genre)
-                    <a href=""
+                    <a href="{{ route('genres.film', $genre->id) }}"
                         class="px-2 py-1 text-xs font-medium rounded-full bg-[#DCFCE7] text-[#166534] hover:bg-[#BBF7D0] transition-colors">{{ $genre->name }}</a>
                 @endforeach
             </div>
             <hr class="border-[#F1F2F6]">
             <div class="flex items-center gap-[6px]">
                 <x-heroicon-o-clock class="w-5 h-5 flex shrink-0 text-ngekos-grey" />
-                <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Duration: {{ $film->duration }}
-                    minutes</p>
+                <p class="text-sm text-ngekos-grey dark:text-[#99a1af]">Durasi: {{ $film->duration }}
+                    menit</p>
             </div>
             <div class="flex items-center gap-[6px]">
                 <x-heroicon-o-users class="w-5 h-5 flex shrink-0 text-ngekos-grey" />

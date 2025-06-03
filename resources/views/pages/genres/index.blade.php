@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Genres | Nonton Bareng')
+@section('title', 'Genre | Nonton Bareng')
 
 @section('content')
     <div id="Background" class="absolute top-0 w-full h-[280px] rounded-bl-[75px] bg-[#b8e6fe] dark:bg-[#00598a]">
@@ -8,8 +8,8 @@
     {{-- Top Navigation --}}
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
         <div class="flex flex-col gap-1">
-            <p>Choose your Genre,</p>
-            <h1 class="font-bold text-xl leading-[30px]">All Genre</h1>
+            <p>Pilih Genremu,</p>
+            <h1 class="font-bold text-xl leading-[30px]">Semua Genre</h1>
         </div>
         <a href="#"
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white dark:bg-[#052f4a]">
@@ -20,7 +20,7 @@
     {{-- Popular Genres Section --}}
     <div class="flex flex-col mt-[30px] gap-4">
         <div class="flex items-center justify-between px-5 z-10">
-            <h2 class="font-bold">Popular Genre</h2>
+            <h2 class="font-bold">Genre Populer</h2>
         </div>
         <div id="Genres" class="swiper w-full overflow-x-hidden">
             <div class="swiper-wrapper">
@@ -34,7 +34,7 @@
     {{-- All Genre Section --}}
     <section id="Studios" class="flex flex-col p-5 gap-4">
         <div class="flex items-center justify-between">
-            <h2 class="font-bold">Browse Genres</h2>
+            <h2 class="font-bold">Cari Genre</h2>
         </div>
         <div class="grid grid-cols-2 gap-4">
             @foreach ($genres as $genre)

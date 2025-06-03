@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Builder;
 use App\Interfaces\TicketRepositoryInterface;
+use Asikam\QrCode\Facades\QrCode;
 
 class TicketRepository implements TicketRepositoryInterface
 {
@@ -44,7 +45,7 @@ class TicketRepository implements TicketRepositoryInterface
             throw new \Exception('Anda sudah memiliki tiket untuk jadwal ini');
         }
 
-        $code = 'DUPRES-' . uniqid();
+        $code = 'DUPRES-' . substr(uniqid(), 0, 5);
 
         return Ticket::create([
             'code' => $code,
@@ -89,5 +90,26 @@ class TicketRepository implements TicketRepositoryInterface
             ->count();
 
         return $check;
+    }
+
+    public function getTicketById($id)
+    {
+        return Ticket::where('student_id', auth()->id())
+            ->where('id', $id)
+            ->first();
+    }
+
+    public function generateQrCode($ticketCode)
+    {
+        $directory = public_path('storage/qrcodes/ticket/');
+        $path = $directory . $ticketCode . '.png';
+
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+
+        if (!file_exists($path)) {
+            QrCode::format('png')->size(200)->generate($ticketCode, $path);
+        }
     }
 }
