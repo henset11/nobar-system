@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\ProfileService;
-use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -43,6 +42,23 @@ class ProfileController extends Controller
         return view('pages.profile.change-password');
     }
 
+    public function deleteAccount()
+    {
+        return view('pages.profile.delete-account');
+    }
+
+    public function confirmDelete(Request $request)
+    {
+        $valid = $this->profileService->validatePassword($request);
+        $response = $this->profileService->responseDelete($valid);
+
+        if (!$response['success']) {
+            return back()->withErrors(['password' => $response['message']]);
+        }
+
+        return redirect()->route('login')->with('success', $response['message']);
+    }
+
     public function theme()
     {
         return view('pages.profile.theme');
@@ -55,7 +71,8 @@ class ProfileController extends Controller
 
     public function validatePassword(Request $request)
     {
-        $valid = Hash::check($request->password, auth()->user()->password);
+        $valid = $this->profileService->validatePassword($request);
+
         return response()->json(['valid' => $valid]);
     }
 }

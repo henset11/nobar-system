@@ -45,5 +45,9 @@
         </form>
     </div>
 
+    @if (session('success'))
+        <x-toast-success :message="session('success')" />
+    @endif
+
     <x-footer />
 @endsection

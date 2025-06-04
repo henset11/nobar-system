@@ -24,7 +24,7 @@
             </div>
             <x-heroicon-o-chevron-right class="w-5 h-5" />
         </a>
-        <a href="#"
+        <a href="{{ route('profile.delete.account') }}"
             class="px-5 py-5 bg-[#d1d5dc70] dark:bg-[#36415370] hover:bg-[#d1d5dc] dark:hover:bg-[#364153] rounded-lg flex justify-between items-center">
             <div class="items-center flex gap-3">
                 <x-heroicon-o-trash class="w-5 h-5" />

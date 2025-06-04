@@ -51,6 +51,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/security', [ProfileController::class, 'security'])->name('profile.security');
     Route::get('/profile/security/change-password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
+    Route::get('/profile/security/delete-account', [ProfileController::class, 'deleteAccount'])->name('profile.delete.account');
+    Route::post('/profile/security/delete-account', [ProfileController::class, 'confirmDelete'])->name('profile.delete.confirm');
     Route::get('/profile/theme', [ProfileController::class, 'theme'])->name('profile.theme');
     Route::get('/profile/help', [ProfileController::class, 'help'])->name('profile.help');
 });

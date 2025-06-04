@@ -602,6 +602,10 @@ video {
     right: 0.5rem /* 8px */;
 }
 
+.right-5 {
+    right: 1.25rem /* 20px */;
+}
+
 .top-0 {
   top: 0px;
 }
