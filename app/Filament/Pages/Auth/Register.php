@@ -27,7 +27,7 @@ class Register extends AuthRegister
 
     protected function getUsernameFormComponent(): Component
     {
-        return TextInput::make('email')
+        return TextInput::make('username')
             ->label('Username')
             ->required()
             ->maxLength(255)
