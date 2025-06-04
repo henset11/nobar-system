@@ -53,7 +53,7 @@ class TicketRepository implements TicketRepositoryInterface
             'student_id' => $this->studentId,
             'seat_id' => $seatId,
             'booking_date' => now('Asia/Makassar'),
-            'status' => 'success',
+            'status' => 'pending',
             'tokenMidtrans' => $code
         ]);
     }
@@ -65,7 +65,6 @@ class TicketRepository implements TicketRepositoryInterface
         $endOfWeek = $now->copy()->endOfWeek();
 
         $successCount = Ticket::where('student_id', $this->studentId)
-            ->where('status', 'success')
             ->whereBetween('booking_date', [$startOfWeek, $endOfWeek])
             ->count();
 
@@ -76,7 +75,6 @@ class TicketRepository implements TicketRepositoryInterface
     {
         $checkSeat = Ticket::where('schedule_id', $scheduleId)
             ->where('seat_id', $seatId)
-            ->where('status', 'success')
             ->first();
 
         return $checkSeat;
@@ -86,7 +84,6 @@ class TicketRepository implements TicketRepositoryInterface
     {
         $check = Ticket::where('schedule_id', $scheduleId)
             ->where('student_id', $this->studentId)
-            ->where('status', 'success')
             ->count();
 
         return $check;
@@ -111,5 +108,32 @@ class TicketRepository implements TicketRepositoryInterface
         if (!file_exists($path)) {
             QrCode::format('png')->size(200)->generate($ticketCode, $path);
         }
+    }
+
+    public function confirmTicket($code)
+    {
+        $ticket = Ticket::where('code', $code)->first();
+
+        if (!$ticket || $ticket->status == 'failed') {
+            return [
+                'status' => 'error',
+                'message' => 'Tiket tidak terdaftar'
+            ];
+        }
+
+        if ($ticket->status == 'success') {
+            return [
+                'status' => 'error',
+                'message' => 'Tiket sudah kadaluarsa'
+            ];
+        }
+
+        $ticket->status = 'success';
+        $ticket->save();
+
+        return [
+            'status' => 'success',
+            'message' => 'Tiket dengan code ' . $code . ' telah digunakan.'
+        ];
     }
 }

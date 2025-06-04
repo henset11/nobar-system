@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ConfirmTicketRequest;
 use App\Http\Requests\CreateTicketRequest;
+use App\Interfaces\TicketRepositoryInterface;
 use App\Interfaces\ScheduleRepositoryInterface;
 use App\Interfaces\ScheduleSeatRepositoryInterface;
-use App\Interfaces\TicketRepositoryInterface;
 
 class TicketController extends Controller
 {
@@ -58,6 +59,13 @@ class TicketController extends Controller
     public function checkTicket()
     {
         return view('pages.ticket.check-ticket');
+    }
+
+    public function confirmTicket(ConfirmTicketRequest $request)
+    {
+        $response = $this->ticketRepository->confirmTicket($request->code);
+
+        return response()->json($response);
     }
 
     public function detailTicket($id)

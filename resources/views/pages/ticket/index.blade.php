@@ -72,7 +72,13 @@
                                         {{ \Carbon\Carbon::parse($ticket->schedule->play_time)->format('H:i') }}
                                     </p>
                                 </div>
-                                <p class="text-[#00c950] dark:text-[#05df72] font-medium">Order {{ $ticket->status }}</p>
+                                <p
+                                    class="@if ($ticket->status == 'success') text-[#00c950] dark:text-[#05df72]
+                                @elseif ($ticket->status == 'pending')
+                                    text-[#d08700] dark:text-[#f0b100]
+                                @else
+                                    text-[#e7000b] dark:text-[#ec003f] @endif font-medium">
+                                    Pesanan {{ $ticket->status }}</p>
                             </div>
                         </div>
                     </a>

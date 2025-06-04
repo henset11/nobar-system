@@ -17,4 +17,6 @@ interface TicketRepositoryInterface
     public function getTicketById($id);
 
     public function generateQrCode($ticketCode);
+
+    public function confirmTicket($code);
 }
