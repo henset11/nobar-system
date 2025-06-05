@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
+// Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 // Category Page
 Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
 Route::get('/genres/{id}', [GenreController::class, 'filmByGenre'])->name('genres.film');
@@ -30,11 +32,13 @@ Route::middleware('registration.enabled')->group(function () {
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register.store');
 });
 
+// Forgot Password Page
 Route::middleware('passwordreset.enabled')->group(function () {
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
 });
 
+// Validate Password
 Route::post('/validate-password', [ProfileController::class, 'validatePassword'])->name('validate.password');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -57,7 +61,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile/help', [ProfileController::class, 'help'])->name('profile.help');
 });
 
+// Confirmation Ticket
 Route::middleware(['auth', 'verified', 'role:admin|super_admin'])->group(function () {
     Route::get('/ticket/check', [TicketController::class, 'checkTicket'])->name('ticket.check');
     Route::post('/ticket/validate', [TicketController::class, 'confirmTicket'])->name('ticket.validate');
 });
+
+// OAuth Login
+Route::get('/oauth/google', [SocialiteController::class, 'googleRedirect'])->name('auth.google');
+Route::get('/oauth/google/callback', [SocialiteController::class, 'googleCallBack']);

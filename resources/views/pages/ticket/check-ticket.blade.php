@@ -18,7 +18,7 @@
     <div class="px-6 mt-5 flex flex-col items-center justify-center">
         <p class="font-bold text-xl">Scan QR Code</p>
         <p class="text-sm mb-5">Scan tiket nonton siswa untuk memvalidasi</p>
-        <div id="reader" class="w-[500px]"></div>
+        <div id="reader" class="w-[400px]"></div>
         <div id="response" class="w-full items-center justify-center mt-4 rounded-lg px-3 py-2 hidden">
 
         </div>

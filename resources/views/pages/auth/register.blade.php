@@ -10,6 +10,19 @@
             <p class="mb-4 text-center text-sm text-[#364153] dark:text-[#99a1af]">Daftar akun baru untuk Nonton Bareng Dunia
                 Prestasi.</p>
 
+            <a href="{{ route('auth.google') }}"
+                class="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-xl bg-[#d1d5dc] dark:bg-[#4a5565] hover:bg-[#99a1af] dark:hover:bg-[#6a7282] focus:ring-4 focus:ring-[#d1d5dc] dark:focus:ring-[#4a5565] gap-2">
+                <img class="h-5 mr-2"
+                    src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
+                    alt="">Daftar dengan Google
+            </a>
+
+            <div class="flex items-center mb-3 gap-2">
+                <hr class="h-0 border-b border-solid border-[#6a7282] grow">
+                <p class="mx-4 text-[#4a5565]">atau</p>
+                <hr class="h-0 border-b border-solid border-[#6a7282] grow">
+            </div>
+
             <div class="mb-5">
                 <label for="name" class="mb-2 text-sm text-[#1e2939] dark:text-[#e5e7eb]">Nama</label>
                 <input type="text" name="name" id="name" placeholder="Masukkan nama kamu"
@@ -61,8 +74,8 @@
             </div>
 
             <button
-                class="w-full mb-2 px-3 py-4 text-sm font-bold leading-none bg-[#00598a] dark:bg-[#024a70] rounded-xl text-white hover:bg-[#024a70] dark:hover:bg-[#00598a]">Register</button>
-            <p class="text-sm leading-relaxed text-[#101828] dark:text-[#e5e7eb]">Sudah punya akun? <a
+                class="w-full mb-3 px-3 py-4 text-sm font-bold leading-none bg-[#00598a] dark:bg-[#024a70] rounded-xl text-white hover:bg-[#024a70] dark:hover:bg-[#00598a]">Register</button>
+            <p class="text-center text-sm leading-relaxed text-[#101828] dark:text-[#e5e7eb]">Sudah punya akun? <a
                     href="{{ route('login') }}" class="font-bold text-[#364153] dark:text-[#99a1af]">Login</a></p>
         </form>
     </div>
