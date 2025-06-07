@@ -14,7 +14,7 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function __construct()
     {
-        $studentId = auth()->id();
+        $this->studentId = auth()->id();
     }
 
     public function getTicketUser($studentId)
@@ -41,11 +41,11 @@ class TicketRepository implements TicketRepositoryInterface
         }
 
         $checkUser = $this->checkUserBook($scheduleId);
-        if ($checkUser >= 0) {
+        if ($checkUser > 0) {
             throw new \Exception('Anda sudah memiliki tiket untuk jadwal ini');
         }
 
-        $code = 'DUPRES-' . substr(uniqid(), 0, 5);
+        $code = 'DUPRES-' . uniqid();
 
         return Ticket::create([
             'code' => $code,
@@ -91,7 +91,7 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function getTicketById($id)
     {
-        return Ticket::where('student_id', auth()->id())
+        return Ticket::where('student_id', $this->studentId)
             ->where('id', $id)
             ->first();
     }

@@ -9,12 +9,13 @@
 @section('content')
     <div id="TopNav" class="sticky flex items-center justify-between px-5 top-0 z-50 py-[0.75rem]">
         <div class="flex gap-5 items-center">
-            <a href="{{ url()->previous() }}"
+            <a href="{{ route('films.show', ['id' => $scheduleData['film_id'], 'date' => $scheduleData['play_date']]) }}"
                 class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-[#99a1af50] dark:bg-white/10 backdrop-blur-sm">
                 <x-heroicon-s-arrow-left-circle class="w-9 h-9 text-[#6a728230] dark:text-[#ffffff25]" />
             </a>
             <div class="flex flex-col">
-                <p class="font-semibold text-[#1e2939] dark:text-white truncate max-w-[12rem]">{{ $scheduleData['film'] }}
+                <p class="font-semibold text-[#1e2939] dark:text-[#ffffff] truncate max-w-[12rem]">
+                    {{ $scheduleData['film'] }}
                 </p>
                 <p class="text-xs font-extralight text-[#99a1af] dark:text-[#d1d5dc]">{{ $scheduleData['studio'] }}</p>
             </div>
@@ -23,7 +24,7 @@
             class="h-12 flex flex-col items-center justify-center shrink-0 rounded-lg overflow-hidden bg-[#99a1af50] dark:bg-white/10 backdrop-blur-sm p-3">
             <p class="text-xs font-extralight text-[#99a1af] dark:text-[#d1d5dc]">
                 {{ \Carbon\Carbon::parse($scheduleData['play_date'])->isoFormat('DD MMM') }}</p>
-            <p class="font-medium text-[#1e2939] dark:text-white">
+            <p class="font-medium text-[#1e2939] dark:text-[#ffffff]">
                 {{ \Carbon\Carbon::parse($scheduleData['play_time'])->format('H:i') }}</p>
         </div>
     </div>

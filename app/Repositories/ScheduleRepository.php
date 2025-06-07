@@ -47,6 +47,7 @@ class ScheduleRepository implements ScheduleRepositoryInterface
 
         return [
             'id' => $schedule->id,
+            'film_id' => $schedule->film->id,
             'film' => $schedule->film->name . ' (' . $schedule->film->release_year  . ')',
             'studio' => $schedule->studio->name,
             'play_date' => $schedule->play_date,
