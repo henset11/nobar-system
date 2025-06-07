@@ -62,7 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Confirmation Ticket
-Route::middleware(['auth', 'verified', 'role:admin|super_admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'can:page_Ticket'])->group(function () {
     Route::get('/ticket/check', [TicketController::class, 'checkTicket'])->name('ticket.check');
     Route::post('/ticket/validate', [TicketController::class, 'confirmTicket'])->name('ticket.validate');
 });

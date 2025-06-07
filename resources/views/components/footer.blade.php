@@ -16,11 +16,11 @@
 
             <!-- Tombol Tengah (Floating Action Button) -->
             <div class="flex justify-center">
-                <a href="{{ auth()->user() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin')) ? route('ticket.check') : route('ticket.index') }}"
+                <a href="{{ auth()->user() && auth()->user()->can('page_Ticket') ? route('ticket.check') : route('ticket.index') }}"
                     class="absolute -top-6">
                     <button
                         class="bg-[#1F2937] dark:bg-[#4a5565] text-white w-15 h-15 rounded-full shadow-xl flex items-center justify-center border-4 border-white dark:border-[#101828]">
-                        @if (auth()->user() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin')))
+                        @if (auth()->user() && auth()->user()->can('page_Ticket'))
                             <x-heroicon-o-camera class="w-8 h-8" />
                         @else
                             <x-heroicon-o-ticket class="w-8 h-8" />
