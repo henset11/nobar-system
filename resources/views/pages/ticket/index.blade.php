@@ -93,9 +93,9 @@
                 <p class="font-extralight text-xs text-[#99a1af] mb-5 text-center">Cemilin snack, sosis, atau makanan &
                     minuman enak
                     lainnya!</p>
-                <a href="{{ route('films.index') }}"
+                <a href="#"
                     class="px-4 py-1 border dark:border-[#ffffff] border-[#1e2939] hover:bg-[#d1d5dc] dark:hover:bg-[#364153] rounded-full text-sm text-[#364153] dark:text-[#e5e7eb]">Lihat
-                    yang lagi tayang</a>
+                    daftar makanan</a>
             </div>
         </div>
     </div>
