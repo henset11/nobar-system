@@ -2122,3 +2122,7 @@ body{
 .h-0 {
     height: 0px;
 }
+
+.aspect-\[2\/3\] {
+    aspect-ratio: 2/3;
+}
