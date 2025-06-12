@@ -2126,3 +2126,7 @@ body{
 .aspect-\[2\/3\] {
     aspect-ratio: 2/3;
 }
+
+.min-h-\[56px\] {
+    min-height: 56px;
+}
