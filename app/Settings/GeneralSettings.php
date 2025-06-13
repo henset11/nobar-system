@@ -10,6 +10,8 @@ class GeneralSettings extends Settings
     public ?string $site_logo;
     public ?string $dark_site_logo;
     public ?string $favicon;
+    public ?string $featured_image;
+    public ?string $site_description;
 
     public bool $site_active;
     public bool $registration_enabled;

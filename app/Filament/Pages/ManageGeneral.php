@@ -8,6 +8,7 @@ use App\Settings\GeneralSettings;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
@@ -38,6 +39,7 @@ class ManageGeneral extends SettingsPage
                     ->schema([
                         TextInput::make('site_name')
                             ->label('Site Name')
+                            ->columnSpan(2)
                             ->required(),
                         FileUpload::make('favicon')
                             ->label('Favicon')
@@ -50,6 +52,25 @@ class ManageGeneral extends SettingsPage
                                     return 'favicon.' . $file->getClientOriginalExtension();
                                 }
                             ),
+                        FileUpload::make('featured_image')
+                            ->label('Featured Image')
+                            ->image()
+                            ->maxSize(1024)
+                            ->disk('public')
+                            ->directory('system')
+                            ->getUploadedFileNameForStorageUsing(
+                                function ($file): string {
+                                    return 'featured-image.' . $file->getClientOriginalExtension();
+                                }
+                            )
+                            ->optimize('jpg'),
+                        Textarea::make('site_description')
+                            ->label('Site Description')
+                            ->columnSpan(2)
+                            ->rows(2)
+                            ->minLength(140)
+                            ->maxLength(160)
+                            ->placeholder('Enter description of your site'),
                         FileUpload::make('site_logo')
                             ->label('Site Logo')
                             ->image()

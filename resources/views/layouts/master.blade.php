@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Pesan tiket nonton bareng, bareng Dunia Prestasi dengan mudah! Sistem ticketing khusus untuk event edukatif, seminar, & nonton bareng siswa Dunia Prestasi.">
+    <meta property="og:image" content="{{ asset('/storage/system/featured-image.jpg') }}" />
     <link rel="shortcut icon" href="{{ asset('/storage/system/favicon.ico') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('assets/output.css') }}">

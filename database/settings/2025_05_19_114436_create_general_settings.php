@@ -10,6 +10,8 @@ return new class extends SettingsMigration
         $this->migrator->add('general.site_logo', '');
         $this->migrator->add('general.dark_site_logo', '');
         $this->migrator->add('general.favicon', '');
+        $this->migrator->add('general.featured_image', '');
+        $this->migrator->add('general.site_description', 'Nobar system for ticketing');
         $this->migrator->add('general.site_active', true);
         $this->migrator->add('general.registration_enabled', true);
         $this->migrator->add('general.login_enabled', true);
