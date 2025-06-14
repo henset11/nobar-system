@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Schedule;
+use App\Models\Ticket;
 use App\Models\User;
 use App\Observers\ScheduleObserver;
+use App\Observers\TicketObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
@@ -31,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
         });
         User::observe(UserObserver::class);
         Schedule::observe(ScheduleObserver::class);
+        Ticket::observe(TicketObserver::class);
     }
 }
