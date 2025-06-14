@@ -7,11 +7,14 @@ use Filament\Tables\Table;
 use App\Models\Ticket as ModelsTicket;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\SelectColumn;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Concerns\InteractsWithTable;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class Ticket extends Page implements HasTable
 {
@@ -27,15 +30,23 @@ class Ticket extends Page implements HasTable
             ->query(ModelsTicket::query())
             ->columns([
                 Split::make([
-                    TextColumn::make('code')
-                        ->searchable()
-                        ->sortable(),
-                    TextColumn::make('student.name')
-                        ->searchable()
-                        ->sortable(),
-                    TextColumn::make('seat.seat_number')
-                        ->label('Seat')
-                        ->badge(),
+                    Stack::make([
+                        SpatieMediaLibraryImageColumn::make('schedule.film.media')
+                            ->collection('film')
+                            ->size(100)
+                            ->grow(false),
+                        TextColumn::make('code')
+                            ->searchable()
+                            ->sortable(),
+                    ]),
+                    Stack::make([
+                        TextColumn::make('student.name')
+                            ->searchable()
+                            ->sortable(),
+                        TextColumn::make('seat.seat_number')
+                            ->label('Seat')
+                            ->badge(),
+                    ]),
                     Stack::make([
                         TextColumn::make('schedule.play_date')
                             ->date('j F Y', 'Asia/Jakarta')
@@ -53,7 +64,6 @@ class Ticket extends Page implements HasTable
                             return "Booking Date:<br>{$state}";
                         })
                         ->html()
-                        ->toggleable(isToggledHiddenByDefault: true)
                         ->sortable(),
                     SelectColumn::make('status')
                         ->options([
@@ -64,6 +74,12 @@ class Ticket extends Page implements HasTable
                         ->rules(['required'])
                         ->selectablePlaceholder(false)
                 ])->from('md')
+            ])
+            ->actions([
+                DeleteAction::make()->iconButton(),
+            ])
+            ->bulkActions([
+                DeleteBulkAction::make(),
             ]);
     }
 }
